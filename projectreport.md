@@ -8,45 +8,29 @@ This comment is not shown when the Markdown is rendered.
    Search for "[" and replace every [placeholder] with your details
    (name, registration number, course, faculty, slot, date).
 
-2. THE images/ FOLDER
-   The images/ folder already exists next to this file.
-   Save every screenshot there with the file name given below.
+2. IMAGES: ALREADY DONE
+   All 14 figures are in images/ and appear in the report
+   automatically.
+   - Figures 1-5 (diagrams): editable source is in diagrams/*.mmd.
+     To update one, paste the .mmd file into https://mermaid.live,
+     click "Actions" -> "PNG", and save it over the old file.
+   - Figures 6-14 (screenshots): made from real runs of main.py
+     with the inputs listed under each figure. If your faculty
+     wants screenshots from your own computer, run the same inputs,
+     take a screenshot, and save it over the file with the same name.
 
-3. DIAGRAMS (Figures 1-5): ALREADY DONE
-   The five diagrams are ready as PNG files in images/ and appear
-   in the report automatically. Their editable source is in
-   diagrams/*.mmd. If you change the code and need to update a
-   diagram: open https://mermaid.live, paste the .mmd file's
-   contents, click "Actions" -> "PNG", and save it over the old
-   file in images/ with the same name.
+3. PDF: ALREADY DONE
+   projectreport.pdf is generated from this file. Placeholders that
+   still need your details are highlighted in yellow in the PDF.
+   After filling them in, regenerate the PDF (or export this file
+   with VS Code + the "Markdown PDF" extension: right-click in the
+   editor -> "Markdown PDF: Export (pdf)").
 
-4. SCREENSHOTS (Figures 6-14)
-   Each box in Section 9 tells you exactly what to type and what
-   must be visible. Run the app with:  python main.py
-   - Windows: Win + Shift + S, then drag over the terminal
-   - Mac: Cmd + Shift + 4, then drag over the terminal
-   - Linux: PrtSc or the Screenshot app
-   Save with the given file name in images/, then replace the box
-   with the image line shown in it.
-   Tip: make the terminal window big and the font large enough
-   to read when printed.
-
-5. MAKE THE PDF (the portal needs a PDF)
-   Option A (easiest): VS Code + the "Markdown PDF" extension
-            (by yzane). Open this file, right-click in the editor,
-            choose "Markdown PDF: Export (pdf)".
-   Option B: Copy the rendered text from GitHub into Google Docs or
-            Word, insert the images, then File -> Download -> PDF.
-   The <div style="page-break-after: always;"></div> lines start a
-   new page in Option A and are invisible on GitHub.
-
-6. BEFORE SUBMITTING
+4. BEFORE SUBMITTING
    [ ] All [placeholders] filled in
-   [ ] All 9 screenshots (Figures 6-14) inserted, no
-       "Attach image" boxes left
    [ ] Test table (Section 10) still matches your code. If you fix
        a bug, re-run that test and update its Actual / Status.
-   [ ] This comment block deleted
+   [ ] PDF regenerated after your changes
 =====================================================================
 -->
 
@@ -154,12 +138,14 @@ Spreadsheets and finance apps exist, but they can feel heavy for someone who jus
 ### 2.2 Scope
 
 **In scope:**
+
 - Adding, viewing and deleting expenses during one run of the program
 - Five fixed categories: Food, Home, Work, Entertainment, Misc
 - Category-wise summary and budget tracking
 - Command-line menu interface
 
 **Out of scope (current version):**
+
 - Saving data after the program closes (data is kept in memory only)
 - Dates, monthly reports or multiple users
 - A graphical user interface
@@ -449,6 +435,7 @@ The project was developed in the GitHub repository **https://github.com/1divyans
 | `af230ab` | 29 Sep 2026 | Update `main.py` (current menu and features) |
 | `d10e1c1` | 29 Sep 2026 | Create `expense.py` |
 | `f5da52d` | 29 Sep 2026 | Add README |
+| `1d1300f` | 30 Sep 2026 | Add project report with diagrams |
 
 *(Update this table with `git log --oneline` if you add more commits.)*
 
@@ -456,148 +443,72 @@ The project was developed in the GitHub repository **https://github.com/1divyans
 
 ## 9. Screenshots / Results
 
-Run the program with `python main.py` and take the screenshots below. The text under each box shows the output you should see.
+Figures 6 to 11 and Figure 13 come from one continuous run of the program, so the amounts carry over from one figure to the next. Figure 12 comes from a separate run. The input typed for each figure is listed under it.
 
 ### 9.1 Program Start and Main Menu
 
-> **📷 Attach image: Figure 6 (Main Menu)**
-> **Do:** run `python main.py`. Take the screenshot as soon as the menu appears.
-> **Must show:** `Expense Tracker!` and all six menu options.
-> **Save as:** `images/fig6-main-menu.png`, then replace this box with:
-> `![Figure 6: Program start and main menu](images/fig6-main-menu.png)`
+![Figure 6: Program start and main menu](images/fig6-main-menu.png)
 
-```
-Expense Tracker!
-No expense Recorded yet.
-------------------------------------------
-
- Main Menu
-1. Add Expenses
-2. View Expense
-3. Delete Expense
-4. View Summary
-5. Edit Budget
-6. Exit
-Enter your choice [1 - 6]:
-```
+**Input:** `python main.py`
+**Result:** The program starts, reports that no expenses have been recorded yet, and waits for a menu choice.
 
 ### 9.2 Adding an Expense
 
-> **📷 Attach image: Figure 7 (Adding an Expense)**
-> **Do:** type `1`, then name `Rent`, amount `1200`, category `2`.
-> **Must show:** the category list, the `Saving the Expense` line and the budget status.
-> **Save as:** `images/fig7-add-expense.png`, then replace this box with:
-> `![Figure 7: Adding an expense](images/fig7-add-expense.png)`
+![Figure 7: Adding an expense](images/fig7-add-expense.png)
 
-```
-Getting User Expenses
-Enter expense name: Rent
-Enter expense amount: 1200
-Select a category:
-1. Food
-2. Home
-3. Work
-4. Entertainment
-5. Misc
-Enter categrory number [1 - 5]: 2
-Saving the Expense: Rent (Home) - 1200.0
-[] budget: Rs.5000, spent: 1200.0
- [] Remaining Budget: 3800.0
-```
+**Input:** `1`, name `Rent`, amount `1200`, category `2`
+**Result:** The expense is saved as *Rent (Home)*. The budget status shows Rs.3800 remaining out of the default Rs.5000.
+
+Two more expenses were then added the same way: `Coffee`, `50`, Food and `Movie`, `300`, Entertainment.
 
 ### 9.3 Viewing Expenses
 
-> **📷 Attach image: Figure 8 (Viewing Expenses)**
-> **Do:** also add `Coffee`, `50`, category `1` and `Movie`, `300`, category `4`. Then type `2`.
-> **Must show:** the numbered list of all three expenses and the budget status.
-> **Save as:** `images/fig8-view-expenses.png`, then replace this box with:
-> `![Figure 8: Viewing all expenses](images/fig8-view-expenses.png)`
+![Figure 8: Viewing all expenses](images/fig8-view-expenses.png)
 
-```
-[] Your Expenses
- 1. Rent (Home) - 1200.0
- 2. Coffee (Food) - 50.0
- 3. Movie (Entertainment) - 300.0
-[] budget: Rs.5000, spent: 1550.0
- [] Remaining Budget: 3450.0
-```
+**Input:** `2`
+**Result:** All three expenses are listed with their numbers. Total spent is 1550.0, leaving 3450.0 of the budget.
 
 ### 9.4 Category Summary
 
-> **📷 Attach image: Figure 9 (Category Summary)**
-> **Do:** with the same three expenses, type `4`.
-> **Must show:** each category with its amount, percentage and `#` bar, plus `Total spent`.
-> **Save as:** `images/fig9-summary.png`, then replace this box with:
-> `![Figure 9: Category-wise summary](images/fig9-summary.png)`
+![Figure 9: Category-wise summary](images/fig9-summary.png)
 
-```
-[] Expenses by category:
- [] Home: 1200.0 (77.41935483870968%) ###############
- [] Food: 50.0 (3.225806451612903%) #
- [] Entertainment: 300.0 (19.35483870967742%) ####
-[] Total spent: 1550.0
-```
+**Input:** `4`
+**Result:** Home takes 77.4% of spending, Entertainment 19.4% and Food 3.2%. Each `#` in the bar stands for about 5% of the total.
 
 ### 9.5 Budget Warning
 
-> **📷 Attach image: Figure 10 (Over-Budget Warning)**
-> **Do:** type `5` and enter `1000` as the new budget. Then type `2` (or add another expense).
-> **Must show:** `[] budget: Rs.1000, spent: 1550.0` and the `WARNING` line.
-> **Save as:** `images/fig10-budget-warning.png`, then replace this box with:
-> `![Figure 10: Budget exceeded warning](images/fig10-budget-warning.png)`
+![Figure 10: Budget exceeded warning](images/fig10-budget-warning.png)
 
-```
-[] budget: Rs.1000, spent: 1550.0
- [] WARNING: you have exceeded the budget by 550.0
-```
+**Input:** `5`, new budget `1000`, then `2`
+**Result:** With the budget lowered to Rs.1000, spending of 1550.0 triggers the warning *you have exceeded the budget by 550.0*.
 
 ### 9.6 Deleting an Expense
 
-> **📷 Attach image: Figure 11 (Deleting an Expense)**
-> **Do:** type `3`, choose expense `2`, then answer `y`.
-> **Must show:** the confirmation question and the `Deleted` message.
-> **Save as:** `images/fig11-delete.png`, then replace this box with:
-> `![Figure 11: Deleting an expense with confirmation](images/fig11-delete.png)`
+![Figure 11: Deleting an expense with confirmation](images/fig11-delete.png)
 
-```
-Choose which expense to delete
- 1. Rent (Home) - 1200.0
- 2. Coffee (Food) - 50.0
- 3. Movie (Entertainment) - 300.0
-Choose expense number [1 - 3]: 2
-[] Delete Coffee (Food) - 50.0 ? (y/n)y
-Deleted Coffee (Food) - 50.0
-```
+**Input:** `3`, expense number `2`, then `y`
+**Result:** After confirmation, *Coffee (Food)* is deleted. Total spent drops to 1500.0, which is still 500.0 over budget.
 
 ### 9.7 Handling Invalid Input
 
-> **📷 Attach image: Figure 12 (Invalid Input)**
-> **Do:** at the menu type `9`. Then type `1`, add any name and amount, and enter category `7`, followed by a valid category.
-> **Must show:** `Invalid choice. Please try again!` and `Invalid category. please try again!`
-> **Save as:** `images/fig12-invalid-input.png`, then replace this box with:
-> `![Figure 12: Handling invalid menu and category input](images/fig12-invalid-input.png)`
+![Figure 12: Handling invalid menu and category input](images/fig12-invalid-input.png)
+
+**Input (separate run):** `9`, then `1`, `Tea`, `15`, category `7`, then category `1`
+**Result:** The invalid menu choice and the invalid category number are both rejected with a message, and the program asks again instead of stopping. The expense is saved once a valid category is entered.
 
 ### 9.8 Exiting the Program
 
-> **📷 Attach image: Figure 13 (Exit Summary)**
-> **Do:** type `6`.
-> **Must show:** the number of expenses recorded, the total spent and `gg goodbye!`
-> **Save as:** `images/fig13-exit.png`, then replace this box with:
-> `![Figure 13: Exit summary](images/fig13-exit.png)`
+![Figure 13: Exit summary](images/fig13-exit.png)
 
-```
-You recorded 2 expenses on this run.
-Total spent: 1500.0
-gg goodbye!
-```
+**Input:** `6`
+**Result:** The program shows how many expenses were recorded in this run and the total spent, then ends.
 
-### 9.9 GitHub Repository and Commit History
+### 9.9 Version Control History
 
-> **📷 Attach image: Figure 14 (Commit History)**
-> **Do:** open https://github.com/1divyansh/Expense-tracker- in a browser, switch to the branch that has your latest code, and click the **Commits** link (clock icon).
-> **Must show:** the list of commits with their messages and dates.
-> **Save as:** `images/fig14-git-history.png`, then replace this box with:
-> `![Figure 14: GitHub commit history](images/fig14-git-history.png)`
+![Figure 14: Git commit history](images/fig14-git-history.png)
+
+**Command:** `git log --oneline` in the project folder
+**Result:** The project's development history, with one commit for each step (see Section 8.9).
 
 <div style="page-break-after: always;"></div>
 
@@ -642,10 +553,10 @@ The tests cover three groups:
 
 - **13 of 20 tests passed.** All the main features work correctly with valid input.
 - **7 tests failed**, and they all come from **missing input validation**, not from wrong calculations:
-  - `int()` and `float()` raise `ValueError` when the text is not a number (TC-16, 17, 18, 20).
-  - `choose_expense()` does not check that the number is between 1 and the number of expenses. The input `0` becomes index `-1`, which Python treats as the last item (TC-15).
-  - `delete_expense()` checks `if not i:` to detect "cancelled". Since `0` is treated as False in Python, choosing expense 1 (index 0) is treated as a cancel (TC-14). Checking `if i is None:` fixes this.
-  - Amounts are not checked to be greater than zero (TC-19).
+    - `int()` and `float()` raise `ValueError` when the text is not a number (TC-16, 17, 18, 20).
+    - `choose_expense()` does not check that the number is between 1 and the number of expenses. The input `0` becomes index `-1`, which Python treats as the last item (TC-15).
+    - `delete_expense()` checks `if not i:` to detect "cancelled". Since `0` is treated as False in Python, choosing expense 1 (index 0) is treated as a cancel (TC-14). Checking `if i is None:` fixes this.
+    - Amounts are not checked to be greater than zero (TC-19).
 
 The fixes for these cases are listed in Section 13.
 
