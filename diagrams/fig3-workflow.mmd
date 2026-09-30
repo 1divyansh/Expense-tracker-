@@ -1,0 +1,17 @@
+flowchart TD
+    A([Start]) --> B["Print 'Expense Tracker!'<br/>expenses = empty list, budget = 5000"]
+    B --> C[Display main menu]
+    C --> D[/Read user choice/]
+    D --> E{Choice?}
+
+    E -->|1| F["get_expenses():<br/>read name, amount, category"]
+    F --> F2[Append expense to list]
+    F2 --> S
+    E -->|2| G["view_expenses()"] --> S
+    E -->|3| H["delete_expense():<br/>choose number, confirm y/n"] --> S
+    E -->|4| I["summrize():<br/>totals per category"] --> S
+    E -->|5| J[/Read new budget/] --> C
+    E -->|6| K["exit():<br/>show count and total"] --> Z([End])
+    E -->|anything else| X["Print 'Invalid choice'"] --> C
+
+    S["budget_status():<br/>show remaining or warning"] --> C

@@ -1,0 +1,13 @@
+flowchart TB
+    U(["User"])
+    UI["<b>Presentation layer</b> (main.py)<br/>main(): menu loop"]
+    F["<b>Feature functions</b> (main.py)<br/>get_expenses, view_expenses, delete_expense,<br/>summrize, budget_status, exit"]
+    H["<b>Helper functions</b> (main.py)<br/>choose_expense, expense_msg, total_expenses"]
+    N["<b>Model</b> (expense.py)<br/>NewExpense(): builds an expense dictionary"]
+    D[("<b>In-memory data</b><br/>expenses: list of dictionaries<br/>budget: int")]
+
+    U <-->|"keyboard input / text output"| UI
+    UI --> F
+    F --> H
+    F --> N
+    F <-->|read and update| D

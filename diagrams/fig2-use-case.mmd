@@ -1,0 +1,28 @@
+flowchart LR
+    User((User))
+
+    subgraph SYS["Expense Tracker System"]
+        UC1(["Add Expense"])
+        UC2(["View Expenses"])
+        UC3(["Delete Expense"])
+        UC4(["View Category Summary"])
+        UC5(["Edit Budget"])
+        UC6(["Exit Application"])
+        UC7(["Select Category"])
+        UC8(["Confirm Deletion"])
+        UC9(["View Budget Status"])
+    end
+
+    User --- UC1
+    User --- UC2
+    User --- UC3
+    User --- UC4
+    User --- UC5
+    User --- UC6
+
+    UC1 -. include .-> UC7
+    UC3 -. include .-> UC8
+    UC1 -. include .-> UC9
+    UC2 -. include .-> UC9
+    UC3 -. include .-> UC9
+    UC4 -. include .-> UC9

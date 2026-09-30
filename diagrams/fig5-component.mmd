@@ -1,0 +1,30 @@
+classDiagram
+    class main_py["main.py"] {
+        <<module>>
+        +main()
+        +get_expenses() dict
+        +view_expenses(expenses)
+        +delete_expense(expenses)
+        +choose_expense(expenses, edit) int
+        +summrize(expenses)
+        +budget_status(expense, budget)
+        +total_expenses(expenses) float
+        +expense_msg(expense) str
+        +exit(expenses)
+    }
+
+    class expense_py["expense.py"] {
+        <<module>>
+        +NewExpense(name, category, amount) dict
+    }
+
+    class Expense {
+        <<dictionary>>
+        +name : str
+        +amount : float
+        +cat : str
+    }
+
+    main_py ..> expense_py : imports NewExpense
+    expense_py ..> Expense : creates
+    main_py "1" o-- "0..*" Expense : stores in expenses list

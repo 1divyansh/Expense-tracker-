@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor User
+    participant M as main()
+    participant G as get_expenses()
+    participant N as NewExpense() in expense.py
+    participant L as expenses list
+    participant B as budget_status()
+
+    User->>M: Enter choice 1
+    M->>G: get_expenses()
+    G->>User: Ask expense name
+    User->>G: Rent
+    G->>User: Ask expense amount
+    User->>G: 1200
+    loop until a valid category number is entered
+        G->>User: Show categories 1-5
+        User->>G: 2
+    end
+    G->>N: NewExpense(name, category, amount)
+    N-->>G: expense dictionary
+    G-->>M: expense
+    M->>L: append(expense)
+    M->>User: Saving the Expense: Rent (Home) - 1200.0
+    M->>B: budget_status(expenses, budget)
+    B->>User: Budget, amount spent, remaining or warning
+    M->>User: Show main menu again
